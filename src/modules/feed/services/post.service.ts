@@ -11,7 +11,6 @@ import { PostQueries } from './post.queries';
 export class PostService {
     constructor(private commands: PostCommands,
         private queries: PostQueries,
-        private userStore: UserStore,
         private mapper: PostMapper,
         private store: FeedStore) {
     }
@@ -30,7 +29,10 @@ export class PostService {
         });
     }
 
-    like(post: Post) {
+    async like(post: Post) {
       // TODO appeler la méthode like sur PostCommands
+      if (this.store.value.roomId) {
+        await this.commands.like(this.store.value.roomId, post.id);
+      }
     }
 }

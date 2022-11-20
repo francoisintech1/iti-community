@@ -30,6 +30,8 @@ export class RoomCreateModalComponent implements OnInit {
   async onOk() {
     if (this.form.form.valid) {
       // TODO invoquer la méthode create du RoomService
+      this.roomService.create(this.model.name, this.model.type);
+      this.roomService.fetch();
       this.close();
     }
   }
@@ -40,7 +42,7 @@ export class RoomCreateModalComponent implements OnInit {
 
   open() {
     this.isVisible = true;
-    setTimeout(() => this.form.resetForm(new CreateRoomFormModel()))
+    setTimeout(() => this.form.resetForm(new CreateRoomFormModel()), 100)
   }
 
   close() {

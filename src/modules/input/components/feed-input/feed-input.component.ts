@@ -110,7 +110,7 @@ export class FeedInputComponent {
    * @param e
    */
   onInputKeyUp(e: KeyboardEvent) {
-
+    
   }
 
   async searchMentionedUsers(search: string) {
@@ -128,9 +128,10 @@ export class FeedInputComponent {
     if (!this.message && !this.file) {
       return;
     }
-
     // TODO émettre  l'évènement "messageSent" via la méthode fireMessageSent
+    this.fireMessageSent();
     // TODO vider la zone de saise avec la méthode clear
+    this.clear();
   }
 
   /**
@@ -146,6 +147,12 @@ export class FeedInputComponent {
    */
   fireMessageSent() {
     // TODO émettre l'évènement "messageSent"
+    this.messageSent.emit({
+      date: new Date(),
+      message: this.message,
+      file: this.file ?? undefined
+    });
+    
   }
 
   /**

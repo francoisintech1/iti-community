@@ -10,7 +10,8 @@ import { FeedSocketService } from '../../services/feed.socket.service';
   styleUrls: ['./feed.component.less']
 })
 export class FeedComponent implements OnInit {
-  @ViewChild('feed') private bottomRef: ElementRef;
+  @ViewChild('feed') 
+  private bottomRef: ElementRef;
 
   roomId$: Observable<string | undefined>;
 

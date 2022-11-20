@@ -15,10 +15,11 @@ export class PostComponent implements OnInit, AfterViewInit {
   anchor: ElementRef<HTMLDivElement>;
 
   constructor(
-    private postService: PostService
+    private postService: PostService,
   ) { }
 
   ngOnInit(): void {
+    this.post.message.text.type
   }
 
   ngAfterViewInit() {
@@ -27,5 +28,6 @@ export class PostComponent implements OnInit, AfterViewInit {
 
   async like() {
     // TODO like du post
+    await this.postService.like(this.post);
   }
 }
